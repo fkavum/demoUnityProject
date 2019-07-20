@@ -9,16 +9,15 @@ public class Hex
    public int row;
    public float xPos;
    public float yPos;
-   public float padding = 0.1f;
+   
    public GameObject instantiatedObject;
    private GameObject[] neigbours;
-   
-   public Vector2 bottomLeftCorner = new Vector2(-4f,-4f);
+   private HexMap _hexMap;
 
-   private readonly float HEIGHT_MULTIPLIER = Mathf.Sqrt(3) / 2;
 
-   public Hex(int col,int row )
+   public Hex(int col,int row , HexMap hexMap )
    {
+      this._hexMap = hexMap;
       this.col = col;
       this.row = row;
       //this.sumFactor = -(col + row);
@@ -26,30 +25,28 @@ public class Hex
 
    public Vector3 position()
    {
-      float radius = 1f;
-      float width = radius * 2;
-      float height = HEIGHT_MULTIPLIER * width;
+      const float radius = 1f;
+      const float width = radius * 2;
+      var height = _hexMap.HEIGHT_MULTIPLIER * width;
 
-      float yTiling = height;
-      float xTiling = width * 0.75f;
+      var yTiling = height;
+      const float xTiling = width * 0.75f;
 
-      xPos = (xTiling * (this.col) + bottomLeftCorner.x);
+      xPos = (xTiling * (this.col) + _hexMap.bottomLeftCorner.x);
       if (col % 2 == 0)
       {
-         yPos = yTiling*(this.row)+bottomLeftCorner.y;
+         yPos = yTiling*(this.row)+_hexMap.bottomLeftCorner.y;
       }
       else
       {
-         yPos = yTiling*(this.row) + yTiling*0.5f + bottomLeftCorner.y;
+         yPos = yTiling*(this.row) + yTiling*0.5f + _hexMap.bottomLeftCorner.y;
       }
 
       return new Vector3(
-         xPos+xPos*padding,
-         yPos+yPos*padding,
+         xPos+xPos*_hexMap.padding,
+         yPos+yPos*_hexMap.padding,
          0
-         
          );
-      
       
    }
 }
