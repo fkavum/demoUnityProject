@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06efde33-f210-4ca8-a094-b5e976982068" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.demoProject/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.demoProject/.idea/indexLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.demoProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.demoProject/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SimpleHexagonScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SimpleHexagonScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Hex.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Hex.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/HexMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/HexMap.cs" afterDir="false" />
@@ -33,16 +31,18 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/HexMap.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
+            <state relative-caret-position="332">
+              <caret line="85" selection-start-line="85" selection-end-line="85" />
               <folding>
-                <marker date="1563639096621" expanded="true" signature="6:146" ph="..." />
-                <marker date="1563639096621" expanded="true" signature="183:1513" ph="{...}" />
-                <marker date="1563639096621" expanded="true" signature="559:644" ph="{...}" />
-                <marker date="1563639096621" expanded="true" signature="709:964" ph="{...}" />
-                <marker date="1563639096621" expanded="true" signature="772:958" ph="{...}" />
-                <marker date="1563639096621" expanded="true" signature="877:948" ph="{...}" />
-                <marker date="1563639096621" expanded="true" signature="1015:1511" ph="{...}" />
+                <marker date="1563644170026" expanded="true" signature="6:146" ph="..." />
+                <marker date="1563644170026" expanded="true" signature="183:2742" ph="{...}" />
+                <marker date="1563644170026" expanded="true" signature="734:881" ph="{...}" />
+                <marker date="1563644170026" expanded="true" signature="921:1400" ph="{...}" />
+                <marker date="1563644170026" expanded="true" signature="1431:1686" ph="{...}" />
+                <marker date="1563644170026" expanded="true" signature="1494:1680" ph="{...}" />
+                <marker date="1563644170026" expanded="true" signature="1599:1670" ph="{...}" />
+                <marker date="1563644170026" expanded="true" signature="1738:2240" ph="{...}" />
+                <marker date="1563644170026" expanded="true" signature="2280:2740" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -51,15 +51,15 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Hex.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-96">
-              <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+            <state relative-caret-position="31">
+              <caret line="28" column="44" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="44" />
               <folding>
-                <marker date="1563638218335" expanded="false" signature="6:78" ph="..." />
-                <marker date="1563638218335" expanded="true" signature="96:1103" ph="{...}" />
-                <marker date="1563638218335" expanded="true" signature="338:460" ph="{...}" />
-                <marker date="1563638218335" expanded="true" signature="490:1101" ph="{...}" />
-                <marker date="1563638218335" expanded="true" signature="781:860" ph="{...}" />
-                <marker date="1563638218335" expanded="true" signature="871:967" ph="{...}" />
+                <marker date="1563641829916" expanded="false" signature="6:78" ph="..." />
+                <marker date="1563641829916" expanded="true" signature="96:1071" ph="{...}" />
+                <marker date="1563641829916" expanded="true" signature="338:460" ph="{...}" />
+                <marker date="1563641829916" expanded="true" signature="490:1069" ph="{...}" />
+                <marker date="1563641829916" expanded="true" signature="749:828" ph="{...}" />
+                <marker date="1563641829916" expanded="true" signature="839:935" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -79,8 +79,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/HexMap.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2094A731-351D-475D-BA68-F5920DE30ED8/12/046b5dbb/Debug.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Hex.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2094A731-351D-475D-BA68-F5920DE30ED8/c7/f4d00818/Logger.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -163,10 +166,10 @@
       <option name="userSelectedPid" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" pid="9428">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" pid="13496">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="9428" />
+      <option name="pid" value="13496" />
       <option name="userSelectedPid" value="false" />
       <method v="2" />
     </configuration>
@@ -182,12 +185,12 @@
       <option name="presentableId" value="Default" />
       <updated>1563612111683</updated>
       <workItem from="1563612122999" duration="7469000" />
-      <workItem from="1563635731235" duration="3536000" />
+      <workItem from="1563635731235" duration="7798000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11005000" />
+    <option name="totallyTimeSpent" value="15267000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -210,7 +213,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.44385734" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.18361954" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -243,50 +246,63 @@
           <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/HexMap.cs</url>
-          <line>26</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/HexMap.cs" initialLine="26">
-            <startOffsets>
-              <option value="597" />
-            </startOffsets>
-            <endOffsets>
-              <option value="638" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="watch">
+      <expression>
+        <expression-string>dummyWatch</expression-string>
+        <language-id>C#</language-id>
+        <custom-info>RiderImportsList:</custom-info>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
   <component name="editorHistoryManager">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2094A731-351D-475D-BA68-F5920DE30ED8/c7/f4d00818/Logger.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="89" column="6" selection-start-line="89" selection-start-column="6" selection-end-line="89" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2094A731-351D-475D-BA68-F5920DE30ED8/12/046b5dbb/Debug.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="186" column="6" selection-start-line="186" selection-start-column="6" selection-end-line="186" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Hex.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-96">
-          <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+        <state relative-caret-position="31">
+          <caret line="28" column="44" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="44" />
           <folding>
-            <marker date="1563638218335" expanded="false" signature="6:78" ph="..." />
-            <marker date="1563638218335" expanded="true" signature="96:1103" ph="{...}" />
-            <marker date="1563638218335" expanded="true" signature="338:460" ph="{...}" />
-            <marker date="1563638218335" expanded="true" signature="490:1101" ph="{...}" />
-            <marker date="1563638218335" expanded="true" signature="781:860" ph="{...}" />
-            <marker date="1563638218335" expanded="true" signature="871:967" ph="{...}" />
+            <marker date="1563641829916" expanded="false" signature="6:78" ph="..." />
+            <marker date="1563641829916" expanded="true" signature="96:1071" ph="{...}" />
+            <marker date="1563641829916" expanded="true" signature="338:460" ph="{...}" />
+            <marker date="1563641829916" expanded="true" signature="490:1069" ph="{...}" />
+            <marker date="1563641829916" expanded="true" signature="749:828" ph="{...}" />
+            <marker date="1563641829916" expanded="true" signature="839:935" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/HexMap.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
+        <state relative-caret-position="332">
+          <caret line="85" selection-start-line="85" selection-end-line="85" />
           <folding>
-            <marker date="1563639096621" expanded="true" signature="6:146" ph="..." />
-            <marker date="1563639096621" expanded="true" signature="183:1513" ph="{...}" />
-            <marker date="1563639096621" expanded="true" signature="559:644" ph="{...}" />
-            <marker date="1563639096621" expanded="true" signature="709:964" ph="{...}" />
-            <marker date="1563639096621" expanded="true" signature="772:958" ph="{...}" />
-            <marker date="1563639096621" expanded="true" signature="877:948" ph="{...}" />
-            <marker date="1563639096621" expanded="true" signature="1015:1511" ph="{...}" />
+            <marker date="1563644170026" expanded="true" signature="6:146" ph="..." />
+            <marker date="1563644170026" expanded="true" signature="183:2742" ph="{...}" />
+            <marker date="1563644170026" expanded="true" signature="734:881" ph="{...}" />
+            <marker date="1563644170026" expanded="true" signature="921:1400" ph="{...}" />
+            <marker date="1563644170026" expanded="true" signature="1431:1686" ph="{...}" />
+            <marker date="1563644170026" expanded="true" signature="1494:1680" ph="{...}" />
+            <marker date="1563644170026" expanded="true" signature="1599:1670" ph="{...}" />
+            <marker date="1563644170026" expanded="true" signature="1738:2240" ph="{...}" />
+            <marker date="1563644170026" expanded="true" signature="2280:2740" ph="{...}" />
           </folding>
         </state>
       </provider>

@@ -25,12 +25,11 @@ public class Hex
 
    public Vector3 position()
    {
-      const float radius = 1f;
-      const float width = radius * 2;
+      float width = _hexMap.hexRadius * 2;
       var height = _hexMap.HEIGHT_MULTIPLIER * width;
 
       var yTiling = height;
-      const float xTiling = width * 0.75f;
+      float xTiling = width * 0.75f;
 
       xPos = (xTiling * (this.col) + _hexMap.bottomLeftCorner.x);
       if (col % 2 == 0)

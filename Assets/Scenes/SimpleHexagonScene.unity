@@ -151,10 +151,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridCol: 10
   gridRow: 5
+  bottomLeftCorner: {x: -4, y: -4}
+  padding: 0.1
   hexMetarials:
   - {fileID: 2100000, guid: 9d4567a5902efde4b921c7209ce3ae5a, type: 2}
   - {fileID: 2100000, guid: ba64a4dbc775b1e4f9ac7cbdf273e38b, type: 2}
   hexPrefab: {fileID: 3590424250804620886, guid: cf957b9380e0505408d9cd5eb5c150f2,
+    type: 3}
+  selectorPrefab: {fileID: 8105148661834605444, guid: 172ac37718646e448959bdf8a76c1f66,
     type: 3}
 --- !u!4 &485558403
 Transform:
