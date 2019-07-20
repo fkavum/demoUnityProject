@@ -215,6 +215,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 843870142}
+  - component: {fileID: 843870143}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -236,6 +237,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &843870143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843870141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a616afccf31b86b408bb6d16e0caf3e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selector: {fileID: 7582818885425613075, guid: c35145f1c2faea648bced932fc241ca1,
+    type: 3}
+  cam: {fileID: 1188978904}
 --- !u!1 &1157295282
 GameObject:
   m_ObjectHideFlags: 0

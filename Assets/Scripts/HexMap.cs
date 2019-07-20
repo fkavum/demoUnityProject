@@ -33,16 +33,6 @@ public class HexMap : MonoBehaviour
         Debug.Log("Map Generated Successfully!");
     }
 
-    private void setSelectorStartPos()
-    {
-        Vector2 firstHexPos = new Vector2(bottomLeftCorner.x * (1f + padding), bottomLeftCorner.y * (1f + padding));
-        selectorStartPosL = new Vector2(firstHexPos.x + hexRadius / 2f + padding / 2f,
-            firstHexPos.y + HEIGHT_MULTIPLIER * hexRadius + padding / 2f
-        );
-        selectorStartPosR = new Vector2(selectorStartPosL.x + hexRadius/2f + padding / 2f,
-            selectorStartPosL.y + HEIGHT_MULTIPLIER*hexRadius + padding / 2f
-        );
-    }
 
     public void generateMap()
     {
@@ -85,4 +75,15 @@ public class HexMap : MonoBehaviour
         
 
     }
+    private void setSelectorStartPos()
+    {
+        Vector2 firstHexPos = new Vector2(bottomLeftCorner.x * (1f + padding), bottomLeftCorner.y * (1f + padding));
+        selectorStartPosL = new Vector2(firstHexPos.x + hexRadius / 2f + padding / 2f,
+            firstHexPos.y + HEIGHT_MULTIPLIER * hexRadius + padding / 2f
+        );
+        selectorStartPosR = new Vector2(selectorStartPosL.x + hexRadius/2f + padding / 2f,
+            selectorStartPosL.y + HEIGHT_MULTIPLIER*hexRadius + padding / 2f
+        );
+    }
+
 }
