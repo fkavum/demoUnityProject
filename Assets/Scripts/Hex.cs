@@ -7,8 +7,11 @@ public class Hex
 
    public int col;
    public int row;
-   public float xPos;
-   public float yPos;
+   
+   
+   // This is not the real position.
+   private float xPos;
+   private float yPos;
    
    public GameObject instantiatedObject;
    private GameObject[] neigbours;

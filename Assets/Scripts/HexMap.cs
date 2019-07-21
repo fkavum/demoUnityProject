@@ -12,24 +12,18 @@ public class HexMap : MonoBehaviour
     public Vector2 bottomLeftCorner = new Vector2(-4f, -4f);
     public readonly float hexRadius = 1f;
 
-    private Vector2 selectorStartPosL;
-    private Vector2 selectorStartPosR;
-
     // About individual hexes
     public float padding = 0.1f;
     public readonly float HEIGHT_MULTIPLIER = Mathf.Sqrt(3) / 2;
     public Material[] hexMetarials;
     public GameObject hexPrefab;
-    public GameObject selectorPrefab;
 
 
     List<List<Hex>> _hexList = new List<List<Hex>>();
 
     void Start()
     {
-        setSelectorStartPos();
         generateMap();
-        initializeSelectors();
         Debug.Log("Map Generated Successfully!");
     }
 
@@ -54,12 +48,12 @@ public class HexMap : MonoBehaviour
         hexObj.name = "c" + column + "_r" + row;
         hex.instantiatedObject = hexObj;
         MeshRenderer mr = hexObj.GetComponentInChildren<MeshRenderer>();
-        mr.material = hexMetarials[Random.Range(0, hexMetarials.Length)];
+        mr.material = hexMetarials[Random.Range(1, hexMetarials.Length)];
 
         // 2d array that holds hexes
         _hexList[column].Add(hex);
     }
-
+    /*
     private void initializeSelectors()
     {
         Instantiate(selectorPrefab, new Vector3(selectorStartPosL.x, selectorStartPosL.y, 0),
@@ -84,6 +78,6 @@ public class HexMap : MonoBehaviour
         selectorStartPosR = new Vector2(selectorStartPosL.x + hexRadius/2f + padding / 2f,
             selectorStartPosL.y + HEIGHT_MULTIPLIER*hexRadius + padding / 2f
         );
-    }
+    }*/
 
 }

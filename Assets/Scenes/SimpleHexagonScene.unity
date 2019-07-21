@@ -156,9 +156,11 @@ MonoBehaviour:
   hexMetarials:
   - {fileID: 2100000, guid: 9d4567a5902efde4b921c7209ce3ae5a, type: 2}
   - {fileID: 2100000, guid: ba64a4dbc775b1e4f9ac7cbdf273e38b, type: 2}
+  - {fileID: 2100000, guid: 8ccaabe1c1a98a74198a4fc82334b394, type: 2}
+  - {fileID: 2100000, guid: 2e5d944f0ae3c044c86b1cfac128087f, type: 2}
+  - {fileID: 2100000, guid: 8381bf7a2b6eca54f836bb4d70304be0, type: 2}
+  - {fileID: 2100000, guid: bd30ab4b88abf9048a272fc9679b0d29, type: 2}
   hexPrefab: {fileID: 3590424250804620886, guid: cf957b9380e0505408d9cd5eb5c150f2,
-    type: 3}
-  selectorPrefab: {fileID: 8105148661834605444, guid: 172ac37718646e448959bdf8a76c1f66,
     type: 3}
 --- !u!4 &485558403
 Transform:
@@ -216,6 +218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 843870142}
   - component: {fileID: 843870143}
+  - component: {fileID: 843870144}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -252,6 +255,19 @@ MonoBehaviour:
   selector: {fileID: 7582818885425613075, guid: c35145f1c2faea648bced932fc241ca1,
     type: 3}
   cam: {fileID: 1188978904}
+--- !u!114 &843870144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843870141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46e02c95964f5704f93e2a884edb1eb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputState: 0
 --- !u!1 &1157295282
 GameObject:
   m_ObjectHideFlags: 0
