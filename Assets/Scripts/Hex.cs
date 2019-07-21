@@ -1,11 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hex
+public class Hex:MonoBehaviour
 {
-
+   [NonSerialized]
    public int col;
+   [NonSerialized]
    public int row;
    
    
@@ -13,20 +15,31 @@ public class Hex
    private float xPos;
    private float yPos;
    
-   public GameObject instantiatedObject;
    private GameObject[] neigbours;
    private HexMap _hexMap;
 
-
+/*
    public Hex(int col,int row , HexMap hexMap )
    {
       this._hexMap = hexMap;
       this.col = col;
       this.row = row;
       //this.sumFactor = -(col + row);
+   }*/
+
+   public void setColandRow(int col,int row)
+   {
+      this.col = col;
+      this.row = row;
+      setPosition();
    }
 
-   public Vector3 position()
+   public void setHexmap(HexMap hexMap)
+   {
+      this._hexMap = hexMap;
+   }
+
+   public void setPosition()
    {
       float width = _hexMap.hexRadius * 2;
       var height = _hexMap.HEIGHT_MULTIPLIER * width;
@@ -43,12 +56,19 @@ public class Hex
       {
          yPos = yTiling*(this.row) + yTiling*0.5f + _hexMap.bottomLeftCorner.y;
       }
+      
+      this.gameObject.transform.Translate(new Vector3(
+         xPos+xPos*_hexMap.padding,
+         yPos+yPos*_hexMap.padding,
+         0
+         ));
 
+      /*
       return new Vector3(
          xPos+xPos*_hexMap.padding,
          yPos+yPos*_hexMap.padding,
          0
          );
-      
+      */
    }
 }

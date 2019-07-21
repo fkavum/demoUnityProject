@@ -60,13 +60,70 @@ public class Selector : MonoBehaviour
 
     private void tripleHex()
     {
+
         foreach (var selectedHex in triggeredObjs._selectedHexes)
         {
-           
+
+            Hex selectedHexScript = selectedHex.GetComponent<Hex>();
+            
             MeshRenderer mr = selectedHex.GetComponentInChildren<MeshRenderer>();
             mr.material =_hexMap.hexMetarials[0];
+        }
+        //List<GameObject> SortedList = triggeredObjs._selectedHexes.OrderBy(o=>o.getComponent<Hex>().).ToList();
+        triggeredObjs._selectedHexes.Sort((x, y) => (x.GetComponent<Hex>().col*10 + x.GetComponent<Hex>().row).CompareTo(y.GetComponent<Hex>().col*10 + y.GetComponent<Hex>().row));
+        if (triggeredObjs._selectedHexes[0].GetComponent<Hex>().col == triggeredObjs._selectedHexes[1].GetComponent<Hex>().col)
+        {
+            Debug.Log("Right Çıkıntılı");
+            
+            /*
+             42    51
+             41
+             
+             swipe Right için 41 -> 42 ,  42 -> 51, 51 -> 41
+                                0   1     1     2   2     0
+             */
+            
+            
+        }else if(triggeredObjs._selectedHexes[1].GetComponent<Hex>().col == triggeredObjs._selectedHexes[2].GetComponent<Hex>().col )
+
+        {
+            Debug.Log("Lef Çıkıntı");
+            
+            /*
+             
+            23 33
+               32             
+             
+             Swipe Right için 23-> 33 , 33 -> 32 , 32->23
+                               0   2     2     1   1   0
+             */
+            
+        }
+        else
+        {
+            Debug.Log("Unexpected select occured.");
         }
     }
     
     
 }
+
+
+/*
+class HexComperor : IComparer<GameObject>
+{ 
+    public int Compare(GameObject x, GameObject y)
+    {
+        int a = x.GetComponent<Hex>().col * 10 + x.row;
+        int b = y.col * 10 + y.row;
+        if (a == 0 || b == 0) 
+        { 
+            return 0; 
+        }  
+        // CompareTo() method 
+        return a.CompareTo(b);
+
+    } 
+} 
+
+*/

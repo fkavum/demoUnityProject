@@ -42,17 +42,22 @@ public class HexMap : MonoBehaviour
 
     private void createHexObj(int column, int row)
     {
-        Hex hex = new Hex(column, row, this);
         GameObject hexObj =
-            Instantiate(hexPrefab, hex.position(), Quaternion.identity, this.transform.Find("Hexagons"));
+            Instantiate(hexPrefab, new Vector3(0,0,0), Quaternion.identity, this.transform.Find("Hexagons"));
+
+        Hex hex = hexObj.GetComponent<Hex>();
+        hex.setHexmap(this);
+        hex.setColandRow(column,row);
         hexObj.name = "c" + column + "_r" + row;
-        hex.instantiatedObject = hexObj;
+        
         MeshRenderer mr = hexObj.GetComponentInChildren<MeshRenderer>();
         mr.material = hexMetarials[Random.Range(1, hexMetarials.Length)];
 
         // 2d array that holds hexes
         _hexList[column].Add(hex);
     }
+    
+    
     /*
     private void initializeSelectors()
     {
