@@ -254,8 +254,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selector: {fileID: 7582818885425613075, guid: c35145f1c2faea648bced932fc241ca1,
     type: 3}
-  rotationSpeed: 2
   cam: {fileID: 1188978904}
+  rotating: 0
 --- !u!114 &843870144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,6 +281,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb530fbdab2583498976b1811b48927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationSpeed: 12
+  rightSided: 0
+  originPoint: {x: 0, y: 0, z: 0}
 --- !u!1 &1157295282
 GameObject:
   m_ObjectHideFlags: 0

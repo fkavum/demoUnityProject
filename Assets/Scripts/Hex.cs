@@ -7,7 +7,7 @@ public class Hex : MonoBehaviour
 {
     public int col;
     public int row;
-    public int ColorIndex;
+    public int colorIndex;
 
     // This is not the real position.
 

@@ -40,7 +40,6 @@ public class HexMap : MonoBehaviour
                }
     }
 
-
     public void generateMap()
     {
         for (int column = 0; column < gridCol; column++)
@@ -64,11 +63,11 @@ public class HexMap : MonoBehaviour
         hex.setColandRow(column,row);
         hexObj.name = "c" + column + "_r" + row;
         
-        // Modification. Add color index
+        // Modification. 
+        int rand = Random.Range(1, hexMetarials.Length);
         MeshRenderer mr = hexObj.GetComponentInChildren<MeshRenderer>();
-    
-        mr.material = hexMetarials[Random.Range(1, hexMetarials.Length)];
-
+        mr.material = hexMetarials[rand];
+        hex.colorIndex = rand;
         // 2d array that holds hexes
         _hexList[column].Add(hex);
     }
