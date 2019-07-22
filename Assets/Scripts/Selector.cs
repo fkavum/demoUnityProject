@@ -10,9 +10,11 @@ public class Selector : MonoBehaviour
     // Selector Prefab Comes here
     public GameObject selector;
 
+    public GameObject[] highlighterObj;
     // Selected Selector Obj Comes here when clicked.
     private GameObject selectedCircle;
 
+    private GameObject highligtedObj;
     // This Obj holds the selected HexInformation
     private triggerCollector triggeredObjs;
 
@@ -45,6 +47,7 @@ public class Selector : MonoBehaviour
 //            Debug.Log(_inputManager.inputState);
             if (_inputManager.inputState == InputManager.inputEnum.Clicked)
             {
+                Destroy(highligtedObj);
                 initializeSelectedCircle();
                 Invoke("getSelectedHex", 0.03f);
             }
@@ -53,6 +56,7 @@ public class Selector : MonoBehaviour
             {
                 if (tripleSelected)
                 {
+                    Destroy(highligtedObj);
                     _threeHexRotator.swipeSelectedRight(triggeredObjs._selectedHexes);
                 }
             }
@@ -61,11 +65,14 @@ public class Selector : MonoBehaviour
             {
                 if (tripleSelected)
                 {
+                    Destroy(highligtedObj);
+
                     _threeHexRotator.swipeSelectedLeft(triggeredObjs._selectedHexes);
                 }
             }
 
         }
+       
         _inputManager.inputState = InputManager.inputEnum.None;
 
     }
@@ -98,12 +105,26 @@ public class Selector : MonoBehaviour
             // results goes to Rotator obj.
             setOriginPoint(3);
             checkSideAndSort();
+            highlightSelection();
 
         }
     }
-    
-    // ------------------------------------
 
+    
+
+    // ------------------------------------
+    private void highlightSelection()
+    {
+        if (_threeHexRotator.rightSided)
+        {
+            highligtedObj =  Instantiate(highlighterObj[0], new Vector3(_threeHexRotator.originPoint.x,_threeHexRotator.originPoint.y,0), Quaternion.identity, this.transform);
+        }
+        else if(!_threeHexRotator.rightSided)
+        {
+            highligtedObj =  Instantiate(highlighterObj[0], new Vector3(_threeHexRotator.originPoint.x,_threeHexRotator.originPoint.y,0), Quaternion.Euler( new Vector3(0, 180, 0)), this.transform);
+        }
+        
+    }
     private void setOriginPoint(int hexCount)
     {
         float posx = 0f;

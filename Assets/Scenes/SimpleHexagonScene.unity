@@ -254,6 +254,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selector: {fileID: 7582818885425613075, guid: c35145f1c2faea648bced932fc241ca1,
     type: 3}
+  highlighterObj:
+  - {fileID: 2557006907545845897, guid: 96491a30e10b01147afbfd34dbf6d36a, type: 3}
   cam: {fileID: 1188978904}
   rotating: 0
 --- !u!114 &843870144
