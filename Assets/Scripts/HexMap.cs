@@ -20,11 +20,24 @@ public class HexMap : MonoBehaviour
 
 
     public List<List<Hex>> _hexList = new List<List<Hex>>();
-
+    public List<List<Vector3>> hexMapCoord = new List<List<Vector3>>();
     void Start()
     {
         generateMap();
+        generateCoordinates();
         Debug.Log("Map Generated Successfully!");
+    }
+
+    private void generateCoordinates()
+    {
+        for (int column = 0; column < gridCol; column++)
+               {
+                   hexMapCoord.Add(new List<Vector3>());
+                   for (int row = 0; row < gridRow; row++)
+                   {
+                       hexMapCoord[column].Add( _hexList[column][row].gameObject.transform.position);
+                   }
+               }
     }
 
 
@@ -59,32 +72,5 @@ public class HexMap : MonoBehaviour
         _hexList[column].Add(hex);
     }
     
-    
-    /*
-    private void initializeSelectors()
-    {
-        Instantiate(selectorPrefab, new Vector3(selectorStartPosL.x, selectorStartPosL.y, 0),
-            Quaternion.identity,
-            this.transform.Find("Selector"));
-        
-      Instantiate(selectorPrefab, new Vector3(selectorStartPosR.x, selectorStartPosR.y, 0),
-            Quaternion.identity,
-            this.transform.Find("Selector"));
-
-      int selectorRowCount = gridRow - 1;
-      int selectorColCount = gridCol - 1;
-        
-
-    }
-    private void setSelectorStartPos()
-    {
-        Vector2 firstHexPos = new Vector2(bottomLeftCorner.x * (1f + padding), bottomLeftCorner.y * (1f + padding));
-        selectorStartPosL = new Vector2(firstHexPos.x + hexRadius / 2f + padding / 2f,
-            firstHexPos.y + HEIGHT_MULTIPLIER * hexRadius + padding / 2f
-        );
-        selectorStartPosR = new Vector2(selectorStartPosL.x + hexRadius/2f + padding / 2f,
-            selectorStartPosL.y + HEIGHT_MULTIPLIER*hexRadius + padding / 2f
-        );
-    }*/
 
 }

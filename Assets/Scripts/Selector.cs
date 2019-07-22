@@ -10,6 +10,8 @@ public class Selector : MonoBehaviour
     // Selector Prefab Comes here
     public GameObject selector;
 
+    public int rotationSpeed = 120;
+
     // Selected Selector Obj Comes here when clicked.
     private GameObject selectedCircle;
 
@@ -20,11 +22,14 @@ public class Selector : MonoBehaviour
     private bool rightSided;
     private bool tripleSelected;
     private bool starSelected;
+
+
     public Camera cam;
     private HexMap _hexMap;
     private InputManager _inputManager;
     private Vector3 originPoint;
-    private bool rotate = false;
+    private bool rotating = false;
+
     private void Start()
     {
         _inputManager = this.gameObject.GetComponent<InputManager>();
@@ -32,25 +37,38 @@ public class Selector : MonoBehaviour
 
     void Update()
     {
+       
         //if(rotate){
         //triggeredObjs._selectedHexes[0].transform.RotateAround(originPoint,Vector3.forward,40*Time.deltaTime);}
 //        Debug.Log(_inputManager.inputState);
-        if (_inputManager.inputState == InputManager.inputEnum.Clicked)
+        if (!rotating)
         {
-            initializeSelectedCircle();
-            Invoke("getSelectedHex", 0.03f);
-        }
+//            Debug.Log(_inputManager.inputState);
+            if (_inputManager.inputState == InputManager.inputEnum.Clicked)
+            {
+                initializeSelectedCircle();
+                Invoke("getSelectedHex", 0.03f);
+            }
 
-        if (_inputManager.inputState == InputManager.inputEnum.SwipedRight)
-        {
-            swipeSelectedRight();
-        }
+            if (_inputManager.inputState == InputManager.inputEnum.SwipedRight)
+            {
+                if (triggeredObjs != null)
+                {
+                    swipeSelectedRight();
+                }
+            }
 
-        if (_inputManager.inputState == InputManager.inputEnum.SwipedLeft)
-        {
-        }
+            if (_inputManager.inputState == InputManager.inputEnum.SwipedLeft)
+            {
+                if (triggeredObjs != null)
+                {
+                    swipeSelectedLeft();
+                }
+            }
 
+        }
         _inputManager.inputState = InputManager.inputEnum.None;
+
     }
 
 
@@ -84,32 +102,32 @@ public class Selector : MonoBehaviour
     {
         float posx = 0f;
         float posy = 0f;
-        
+
         foreach (var selectedHex in triggeredObjs._selectedHexes)
         {
             posx += selectedHex.transform.position.x;
             posy += selectedHex.transform.position.y;
+
+            /*
             Hex selectedHexScript = selectedHex.GetComponent<Hex>();
             MeshRenderer mr = selectedHex.GetComponentInChildren<MeshRenderer>();
-            mr.material = _hexMap.hexMetarials[0];
+            mr.material = _hexMap.hexMetarials[0];*/
         }
-        
-        originPoint = new Vector3(posx/3f,posy/3f,0);
-        
-        
-        
-        rotate = true;
-        
-     
-      
-        
-        
+
+        originPoint = new Vector3(posx / 3f, posy / 3f, 0);
+
+        checkSelectedsShape();
+    }
+
+    // This is only set the "rightSided" variable. and Sort the selecteds
+    private void checkSelectedsShape()
+    {
         // Sorting by looking their col*10 + row values.
         triggeredObjs._selectedHexes.Sort((x, y) =>
             (x.GetComponent<Hex>().col * 10 + x.GetComponent<Hex>().row).CompareTo(
                 y.GetComponent<Hex>().col * 10 + y.GetComponent<Hex>().row));
-        
-        
+
+
         if (triggeredObjs._selectedHexes[0].GetComponent<Hex>().col ==
             triggeredObjs._selectedHexes[1].GetComponent<Hex>().col)
         {
@@ -127,25 +145,34 @@ public class Selector : MonoBehaviour
         {
             Debug.Log("Unexpected select occured.");
         }
-        StartCoroutine( Rotate( new Vector3(0, 0, 90), 2f,120 ) ) ;
     }
-    
-    public GameObject objectToRotate;
-    private bool rotating ;
-    
-    private IEnumerator Rotate( Vector3 angles, float speed,float angle)
+
+
+    private IEnumerator Rotate(GameObject hexToRotate, float speed, float angle, Vector3 rotateAxis, int col, int row)
     {
-        for( float t = 0 ; t < angle ; t+= speed )
+        rotating = true;
+        for (float t = 0; t < angle; t += speed)
         {
-            triggeredObjs._selectedHexes[0].transform.RotateAround(originPoint,Vector3.forward, speed );
+            rotating = true;
+            hexToRotate.transform.RotateAround(originPoint, rotateAxis, speed);
             yield return null;
         }
-    }
- 
 
+        hexToRotate.GetComponent<Hex>().moveHex(col, row);
+        rotating = false;
+    }
 
     private void swipeSelectedRight()
     {
+        int r0 = triggeredObjs._selectedHexes[0].GetComponent<Hex>().row;
+        int r1 = triggeredObjs._selectedHexes[1].GetComponent<Hex>().row;
+        int r2 = triggeredObjs._selectedHexes[2].GetComponent<Hex>().row;
+        int c0 = triggeredObjs._selectedHexes[0].GetComponent<Hex>().col;
+        int c1 = triggeredObjs._selectedHexes[1].GetComponent<Hex>().col;
+        int c2 = triggeredObjs._selectedHexes[2].GetComponent<Hex>().col;
+
+        //Debug.Log("Selected: " + c0+r0 + " , " + c1+r1 + " , " + c2+r2 );
+
         /* Right Sided
             42    51
             41
@@ -157,16 +184,75 @@ public class Selector : MonoBehaviour
         if (rightSided)
         {
             // 0 -> 1
-         
-            
-            // 1 -> 2
+            StartCoroutine(Rotate(triggeredObjs._selectedHexes[0], this.rotationSpeed, 120, Vector3.back, c1, r1));
 
-            
+            // 1 -> 2
+            StartCoroutine(Rotate(triggeredObjs._selectedHexes[1], this.rotationSpeed, 120, Vector3.back, c2, r2));
+
             // 2 -> 0
+            StartCoroutine(Rotate(triggeredObjs._selectedHexes[2], this.rotationSpeed, 120, Vector3.back, c0, r0));
             return;
         }
-        
-        
+
+        // 0 -> 2
+        StartCoroutine(Rotate(triggeredObjs._selectedHexes[0], this.rotationSpeed, 120, Vector3.back, c2, r2));
+
+        // 2 -> 1
+        StartCoroutine(Rotate(triggeredObjs._selectedHexes[2], this.rotationSpeed, 120, Vector3.back, c1, r1));
+
+        // 1 -> 0
+        StartCoroutine(Rotate(triggeredObjs._selectedHexes[1], this.rotationSpeed, 120, Vector3.back, c0, r0));
+
+        /* Left Sided
+          
+         23 33
+            32             
+          
+          Swipe Right için 23-> 33 , 33 -> 32 , 32->23
+                            0   2     2     1   1   0
+          */
+    }
+
+    private void swipeSelectedLeft()
+    {
+        int r0 = triggeredObjs._selectedHexes[0].GetComponent<Hex>().row;
+        int r1 = triggeredObjs._selectedHexes[1].GetComponent<Hex>().row;
+        int r2 = triggeredObjs._selectedHexes[2].GetComponent<Hex>().row;
+        int c0 = triggeredObjs._selectedHexes[0].GetComponent<Hex>().col;
+        int c1 = triggeredObjs._selectedHexes[1].GetComponent<Hex>().col;
+        int c2 = triggeredObjs._selectedHexes[2].GetComponent<Hex>().col;
+
+        Debug.Log("Selected: " + c0 + r0 + " , " + c1 + r1 + " , " + c2 + r2);
+
+        /* Right Sided
+            42    51
+            41
+            
+            swipe Right için 41 -> 42 ,  42 -> 51, 51 -> 41
+                               0   1     1     2   2     0
+            */
+
+        if (rightSided)
+        {
+            // 0 -> 1
+            StartCoroutine(Rotate(triggeredObjs._selectedHexes[1], this.rotationSpeed, 120, Vector3.forward, c0, r0));
+
+            // 1 -> 2
+            StartCoroutine(Rotate(triggeredObjs._selectedHexes[2], this.rotationSpeed, 120, Vector3.forward, c1, r1));
+
+            // 2 -> 0
+            StartCoroutine(Rotate(triggeredObjs._selectedHexes[0], this.rotationSpeed, 120, Vector3.forward, c2, r2));
+            return;
+        }
+
+        // 0 -> 2
+        StartCoroutine(Rotate(triggeredObjs._selectedHexes[2], this.rotationSpeed, 120, Vector3.forward, c0, r0));
+
+        // 2 -> 1
+        StartCoroutine(Rotate(triggeredObjs._selectedHexes[1], this.rotationSpeed, 120, Vector3.forward, c2, r2));
+
+        // 1 -> 0
+        StartCoroutine(Rotate(triggeredObjs._selectedHexes[0], this.rotationSpeed, 120, Vector3.forward, c1, r1));
 
         /* Left Sided
           
@@ -178,41 +264,3 @@ public class Selector : MonoBehaviour
           */
     }
 }
-/*
- 
-    //triggeredObjs._selectedHexes[0].transform.RotateAround(originPoint,Vector3.forward, 90 );
-private IEnumerator Rotate( Vector3 angles, float speed,float angle)
-{
-objectToRotate = triggeredObjs._selectedHexes[0];
-rotating = true ;
-Quaternion startRotation = objectToRotate.transform.rotation ;
-Quaternion endRotation = Quaternion.Euler( angles ) * startRotation ;
-for( float t = 0 ; t < angle ; t+= speed )
-{
-    triggeredObjs._selectedHexes[0].transform.RotateAround(originPoint,Vector3.forward, speed );
-    //objectToRotate.transform.rotation = Quaternion.Lerp( startRotation, endRotation, t / duration ) ;
-    yield return null;
-}
-//objectToRotate.transform.rotation = endRotation  ;
-// rotating = false;
-}
-*/
-
-/*
-class HexComperor : IComparer<GameObject>
-{ 
-    public int Compare(GameObject x, GameObject y)
-    {
-        int a = x.GetComponent<Hex>().col * 10 + x.row;
-        int b = y.col * 10 + y.row;
-        if (a == 0 || b == 0) 
-        { 
-            return 0; 
-        }  
-        // CompareTo() method 
-        return a.CompareTo(b);
-
-    } 
-} 
-
-*/

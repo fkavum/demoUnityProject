@@ -254,6 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selector: {fileID: 7582818885425613075, guid: c35145f1c2faea648bced932fc241ca1,
     type: 3}
+  rotationSpeed: 2
   cam: {fileID: 1188978904}
 --- !u!114 &843870144
 MonoBehaviour:

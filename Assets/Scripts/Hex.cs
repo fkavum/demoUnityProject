@@ -5,23 +5,14 @@ using UnityEngine;
 
 public class Hex : MonoBehaviour
 {
-    [NonSerialized] public int col;
-    [NonSerialized] public int row;
+    public int col;
+    public int row;
 
 
     // This is not the real position.
 
     private GameObject[] neigbours;
     private HexMap _hexMap;
-
-/*
-   public Hex(int col,int row , HexMap hexMap )
-   {
-      this._hexMap = hexMap;
-      this.col = col;
-      this.row = row;
-      //this.sumFactor = -(col + row);
-   }*/
 
     public void setColandRow(int col, int row)
     {
@@ -73,7 +64,7 @@ public class Hex : MonoBehaviour
     }
 
 
-    public void moveHex(int col, int row, Vector3 newPosition)
+    public void moveHex(int col, int row)
     {
         // change Arraylist index
         _hexMap._hexList[col][row] = this;
@@ -82,8 +73,11 @@ public class Hex : MonoBehaviour
         this.col = col;
         this.row = row;
         // change real position
+        //setPosition();
         
-        float step = 1f;
-        this.gameObject.transform.position = Vector3.MoveTowards(this.gameObject.transform.position, newPosition, step);
+        this.gameObject.transform.position = _hexMap.hexMapCoord[col][row];
+        
+        //float step = 1f;
+        //this.gameObject.transform.position = Vector3.MoveTowards(this.gameObject.transform.position, newPosition, step);
     }
 }
