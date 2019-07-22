@@ -19,7 +19,7 @@ public class HexMap : MonoBehaviour
     public GameObject hexPrefab;
 
 
-    List<List<Hex>> _hexList = new List<List<Hex>>();
+    public List<List<Hex>> _hexList = new List<List<Hex>>();
 
     void Start()
     {
@@ -42,14 +42,16 @@ public class HexMap : MonoBehaviour
 
     private void createHexObj(int column, int row)
     {
+
+        // Initialization
         GameObject hexObj =
             Instantiate(hexPrefab, new Vector3(0,0,0), Quaternion.identity, this.transform.Find("Hexagons"));
-
         Hex hex = hexObj.GetComponent<Hex>();
         hex.setHexmap(this);
         hex.setColandRow(column,row);
         hexObj.name = "c" + column + "_r" + row;
         
+        // Modification.
         MeshRenderer mr = hexObj.GetComponentInChildren<MeshRenderer>();
         mr.material = hexMetarials[Random.Range(1, hexMetarials.Length)];
 
