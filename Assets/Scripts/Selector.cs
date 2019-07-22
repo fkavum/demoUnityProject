@@ -97,6 +97,7 @@ public class Selector : MonoBehaviour
         {
             _hexMap = triggeredObjs._selectedHexes[0].transform.parent.transform.parent.GetComponent<HexMap>();
         }
+        _hexMap.breakTriples();
 
         if (triggeredObjs._selectedHexes.Count == 3)
         {

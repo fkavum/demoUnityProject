@@ -33,6 +33,7 @@ public class ThreeHexRotator : MonoBehaviour
         int c1 = triggeredObjs[1].GetComponent<Hex>().col;
         int c2 = triggeredObjs[2].GetComponent<Hex>().col;
 
+        Debug.Log("Swipe Started.");
         //Debug.Log("Selected: " + c0+r0 + " , " + c1+r1 + " , " + c2+r2 );
         if (rotateClockwise)
         {

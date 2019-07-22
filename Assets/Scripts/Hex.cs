@@ -13,6 +13,8 @@ public class Hex : MonoBehaviour
 
     private GameObject[] neigbours;
     private HexMap _hexMap;
+    //[NonSerialized]
+    //public GameObject hexObj;
 
     public void setColandRow(int col, int row)
     {
@@ -24,6 +26,7 @@ public class Hex : MonoBehaviour
     public void setHexmap(HexMap hexMap)
     {
         this._hexMap = hexMap;
+       // this.hexObj = this.gameObject;
     }
 
     public void setPosition()
@@ -68,4 +71,7 @@ public class Hex : MonoBehaviour
         // change real position (When animation finishes it goes in his real place.)
         this.gameObject.transform.position = _hexMap.hexMapCoord[col][row];
     }
+
+ 
+    
 }
