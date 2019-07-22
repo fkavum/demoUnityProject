@@ -17,6 +17,7 @@
           <e p="triggerCollector.cs" t="Include" />
         </e>
         <e p="StateMachine.cs" t="Include" />
+        <e p="threeHexRotator.cs" t="Include" />
       </e>
       <e p="demoProject.sln" t="IncludeFlat" />
       <e p="obj" t="ExcludeRecursive" />

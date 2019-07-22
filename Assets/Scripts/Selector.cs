@@ -29,10 +29,12 @@ public class Selector : MonoBehaviour
     private InputManager _inputManager;
     private Vector3 originPoint;
     private bool rotating = false;
+    private ThreeHexRotator _threeHexRotator;
 
     private void Start()
     {
         _inputManager = this.gameObject.GetComponent<InputManager>();
+        _threeHexRotator = this.gameObject.GetComponent<ThreeHexRotator>();
     }
 
     void Update()

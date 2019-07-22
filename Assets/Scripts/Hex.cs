@@ -7,7 +7,7 @@ public class Hex : MonoBehaviour
 {
     public int col;
     public int row;
-
+    public int ColorIndex;
 
     // This is not the real position.
 
@@ -53,14 +53,6 @@ public class Hex : MonoBehaviour
             yPos + yPos * _hexMap.padding,
             0
         ));
-
-        /*
-        return new Vector3(
-           xPos+xPos*_hexMap.padding,
-           yPos+yPos*_hexMap.padding,
-           0
-           );
-        */
     }
 
 
@@ -72,12 +64,8 @@ public class Hex : MonoBehaviour
         // change Column and Row
         this.col = col;
         this.row = row;
-        // change real position
-        //setPosition();
         
+        // change real position (When animation finishes it goes in his real place.)
         this.gameObject.transform.position = _hexMap.hexMapCoord[col][row];
-        
-        //float step = 1f;
-        //this.gameObject.transform.position = Vector3.MoveTowards(this.gameObject.transform.position, newPosition, step);
     }
 }

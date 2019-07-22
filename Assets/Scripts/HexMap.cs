@@ -64,8 +64,9 @@ public class HexMap : MonoBehaviour
         hex.setColandRow(column,row);
         hexObj.name = "c" + column + "_r" + row;
         
-        // Modification.
+        // Modification. Add color index
         MeshRenderer mr = hexObj.GetComponentInChildren<MeshRenderer>();
+    
         mr.material = hexMetarials[Random.Range(1, hexMetarials.Length)];
 
         // 2d array that holds hexes
