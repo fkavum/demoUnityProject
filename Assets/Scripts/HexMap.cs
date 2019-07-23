@@ -65,7 +65,7 @@ public class HexMap : MonoBehaviour
 
         // Modification. 
         int rand = Random.Range(1, hexMetarials.Length);
-         //rand = Random.Range(1, 4);
+        //rand = Random.Range(1, 4);
         MeshRenderer mr = hexObj.GetComponentInChildren<MeshRenderer>();
         mr.material = hexMetarials[rand];
         hex.colorIndex = rand;
@@ -92,14 +92,17 @@ public class HexMap : MonoBehaviour
         foreach (Hex breakHex in breakList)
         {
             breakHex.gameObject.transform.Translate(new Vector3(0, 10, 0));
+
         }
+        fillEmptyGrids(breakList);
+
     }
 
     private bool isInBreakList(int col, int row)
     {
         int colorIndex = _hexList[col][row].colorIndex;
 
-        int c0,c1,c2,c3,c4,c5,r0,r1,r2,r3,r4,r5;
+        int c0, c1, c2, c3, c4, c5, r0, r1, r2, r3, r4, r5;
 
         c2 = col;
         c3 = col;
@@ -124,26 +127,27 @@ public class HexMap : MonoBehaviour
             r1 = row + 1;
             r5 = row + 1;
         }
-        
+
         Debug.Log("Checking: " + col + "" + row);
         // 22    11 (col-1,row-1 -- 0) 12 (col-1,row -- 1) 21 (col,row-1 -- 2) 23 (col, row+1 -- 3 ) 31 (col +1 , row-1 -- 4) 32 (col+1 ,row -- 5)
         // 0 - 1 
-        if (c0 >= 0 && r0 >= 0 && c1 >=0 && r1 < gridRow )
+        if (c0 >= 0 && r0 >= 0 && c1 >= 0 && r1 < gridRow)
         {
             if (_hexList[c0][r0].colorIndex == _hexList[c1][r1].colorIndex &&
                 colorIndex == _hexList[c1][r1].colorIndex)
             {
-                Debug.Log(col + " " +row + "with  0 - 1" );
+                Debug.Log(col + " " + row + "with  0 - 1");
                 return true;
             }
         }
+
         if (c0 >= 0 && r0 >= 0 && r2 >= 0)
         {
             // 0 -2 
             if (_hexList[c0][r0].colorIndex == _hexList[c2][r2].colorIndex &&
                 colorIndex == _hexList[c2][r2].colorIndex)
             {
-                Debug.Log(col + " " +row + "with  0 - 2" );
+                Debug.Log(col + " " + row + "with  0 - 2");
                 return true;
             }
         }
@@ -154,7 +158,7 @@ public class HexMap : MonoBehaviour
             if (_hexList[c1][r1].colorIndex == _hexList[c3][r3].colorIndex &&
                 colorIndex == _hexList[c1][r1].colorIndex)
             {
-                Debug.Log(col + " " +row + "with  1 - 3" );
+                Debug.Log(col + " " + row + "with  1 - 3");
                 return true;
             }
         }
@@ -165,7 +169,7 @@ public class HexMap : MonoBehaviour
             if (_hexList[c2][r2].colorIndex == _hexList[c4][r4].colorIndex &&
                 colorIndex == _hexList[c2][r2].colorIndex)
             {
-                Debug.Log(col + " " +row + "with  2 - 4" );
+                Debug.Log(col + " " + row + "with  2 - 4");
                 return true;
             }
         }
@@ -176,22 +180,66 @@ public class HexMap : MonoBehaviour
             if (_hexList[c3][r3].colorIndex == _hexList[c5][r5].colorIndex &&
                 colorIndex == _hexList[c3][r3].colorIndex)
             {
-                Debug.Log(col + " " +row + "with  3 - 5" );
+                Debug.Log(col + " " + row + "with  3 - 5");
                 return true;
             }
         }
 
-        if ( r5 < gridRow && c5 < gridCol && r4 >= 0 && c4 < gridCol)
+        if (r5 < gridRow && c5 < gridCol && r4 >= 0 && c4 < gridCol)
         {
             //4 - 5 
             if (_hexList[c4][r4].colorIndex == _hexList[c5][r5].colorIndex &&
                 colorIndex == _hexList[c5][r5].colorIndex)
             {
-                Debug.Log(col + " " +row + "with  4 - 5" );
+                Debug.Log(col + " " + row + "with  4 - 5");
                 return true;
             }
         }
 
         return false;
+    }
+
+
+    private void fillEmptyGrids(List<Hex> breakList)
+    {
+        foreach (Hex breakHex in breakList)
+        {
+
+            fillEmptyGrid(breakHex.col,breakHex.row);
+        }
+    }
+
+    private void fillEmptyGrid(int emptyGridCol, int emptyGridRow)
+    {
+        
+        if (emptyGridRow == gridRow - 1)
+        {
+            newHexHasArrived(emptyGridRow);
+            return;
+        }
+
+        Hex hexGoesDown = _hexList[emptyGridCol][emptyGridRow + 1];
+        
+        // Move the real location
+        hexGoesDown.transform.position = hexMapCoord[emptyGridCol][emptyGridRow];
+        // change row and column
+        hexGoesDown.row = emptyGridRow;
+        // change hexmap
+        _hexList[emptyGridCol][emptyGridRow] = hexGoesDown;
+
+        // Recursively goes down
+        fillEmptyGrid(emptyGridCol, emptyGridRow + 1);
+
+
+    }
+
+    private IEnumerator wait()
+    {
+        yield return new WaitForSeconds(1);
+    }
+
+    private void newHexHasArrived(int row)
+    {
+        Debug.Log("I'll fill the " + row + " later");
     }
 }
