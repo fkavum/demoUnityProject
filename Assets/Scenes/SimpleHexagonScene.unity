@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b232a0ec3053b44872701ebc56dca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridCol: 10
+  gridCol: 7
   gridRow: 5
   bottomLeftCorner: {x: -4, y: -4}
   padding: 0.1

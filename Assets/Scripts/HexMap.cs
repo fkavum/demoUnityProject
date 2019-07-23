@@ -65,6 +65,7 @@ public class HexMap : MonoBehaviour
 
         // Modification. 
         int rand = Random.Range(1, hexMetarials.Length);
+         //rand = Random.Range(1, 4);
         MeshRenderer mr = hexObj.GetComponentInChildren<MeshRenderer>();
         mr.material = hexMetarials[rand];
         hex.colorIndex = rand;
@@ -124,7 +125,7 @@ public class HexMap : MonoBehaviour
             r5 = row + 1;
         }
         
-        
+        Debug.Log("Checking: " + col + "" + row);
         // 22    11 (col-1,row-1 -- 0) 12 (col-1,row -- 1) 21 (col,row-1 -- 2) 23 (col, row+1 -- 3 ) 31 (col +1 , row-1 -- 4) 32 (col+1 ,row -- 5)
         // 0 - 1 
         if (c0 >= 0 && r0 >= 0 && c1 >=0 && r1 < gridRow )
@@ -158,7 +159,7 @@ public class HexMap : MonoBehaviour
             }
         }
 
-        if (r2 >= 0 && r4 >= 0 && c4 < gridRow)
+        if (r2 >= 0 && r4 >= 0 && c4 < gridCol)
         {
             // 2  -4 
             if (_hexList[c2][r2].colorIndex == _hexList[c4][r4].colorIndex &&
@@ -169,7 +170,7 @@ public class HexMap : MonoBehaviour
             }
         }
 
-        if (r3 < gridRow && r5 < gridRow && c5 < gridRow)
+        if (r3 < gridRow && r5 < gridRow && c5 < gridCol)
         {
             // 3 - 5
             if (_hexList[c3][r3].colorIndex == _hexList[c5][r5].colorIndex &&
@@ -180,7 +181,7 @@ public class HexMap : MonoBehaviour
             }
         }
 
-        if ( r5 < gridRow && c5 < gridRow && r4 >= 0 && c4 < gridRow)
+        if ( r5 < gridRow && c5 < gridCol && r4 >= 0 && c4 < gridCol)
         {
             //4 - 5 
             if (_hexList[c4][r4].colorIndex == _hexList[c5][r5].colorIndex &&
