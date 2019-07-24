@@ -13,14 +13,19 @@ public class Hex : MonoBehaviour
 
     private GameObject[] neigbours;
     private HexMap _hexMap;
-    //[NonSerialized]
-    //public GameObject hexObj;
 
     public void setColandRow(int col, int row)
     {
         this.col = col;
         this.row = row;
         setPosition();
+    }
+    
+    public void setColandRowAnimatively(int col, int row)
+    {
+        this.col = col;
+        this.row = row;
+        StartCoroutine(_hexMap.wait(this, _hexMap.hexMapCoord[col][row]));
     }
 
     public void setHexmap(HexMap hexMap)
@@ -57,7 +62,6 @@ public class Hex : MonoBehaviour
             0
         ));
     }
-
 
     public void moveHex(int col, int row)
     {

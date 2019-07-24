@@ -27,6 +27,12 @@ public class HexMap : MonoBehaviour
         generateMap();
         generateCoordinates();
         Debug.Log("Map Generated Successfully!");
+
+        while (breakTriples())
+        {
+            Debug.Log("we need to break triples");
+        }
+
     }
 
     private void generateCoordinates()
@@ -73,7 +79,7 @@ public class HexMap : MonoBehaviour
         _hexList[column].Add(hex);
     }
 
-    public void breakTriples()
+    public bool breakTriples()
     {
         List<Hex> breakList = new List<Hex>();
         for (int column = 0; column < gridCol; column++)
@@ -88,6 +94,10 @@ public class HexMap : MonoBehaviour
             }
         }
 
+        if (breakList.Count == 0)
+        {
+            return false;
+        }
 
         foreach (Hex breakHex in breakList)
         {
@@ -96,6 +106,7 @@ public class HexMap : MonoBehaviour
         }
         fillEmptyGrids(breakList);
 
+        return true;
     }
 
     private bool isInBreakList(int col, int row)
@@ -128,7 +139,7 @@ public class HexMap : MonoBehaviour
             r5 = row + 1;
         }
 
-        Debug.Log("Checking: " + col + "" + row);
+        //Debug.Log("Checking: " + col + "" + row);
         // 22    11 (col-1,row-1 -- 0) 12 (col-1,row -- 1) 21 (col,row-1 -- 2) 23 (col, row+1 -- 3 ) 31 (col +1 , row-1 -- 4) 32 (col+1 ,row -- 5)
         // 0 - 1 
         if (c0 >= 0 && r0 >= 0 && c1 >= 0 && r1 < gridRow)
@@ -202,10 +213,18 @@ public class HexMap : MonoBehaviour
 
     private void fillEmptyGrids(List<Hex> breakList)
     {
+        // Sorting by looking their col*10 + row values.
+        breakList.Sort((y, x) =>
+            (x.GetComponent<Hex>().row).CompareTo(y.GetComponent<Hex>().row));
         foreach (Hex breakHex in breakList)
         {
 
             fillEmptyGrid(breakHex.col,breakHex.row);
+        }
+        foreach (Hex breakHex in breakList)
+        {
+
+            Destroy(breakHex.gameObject);
         }
     }
 
@@ -214,14 +233,15 @@ public class HexMap : MonoBehaviour
         
         if (emptyGridRow == gridRow - 1)
         {
-            newHexHasArrived(emptyGridRow);
+            newHexHasArrived(emptyGridCol,emptyGridRow);
             return;
         }
 
         Hex hexGoesDown = _hexList[emptyGridCol][emptyGridRow + 1];
         
         // Move the real location
-        hexGoesDown.transform.position = hexMapCoord[emptyGridCol][emptyGridRow];
+        StartCoroutine(wait(hexGoesDown, hexMapCoord[emptyGridCol][emptyGridRow]));
+        //hexGoesDown.transform.position = hexMapCoord[emptyGridCol][emptyGridRow];
         // change row and column
         hexGoesDown.row = emptyGridRow;
         // change hexmap
@@ -233,13 +253,39 @@ public class HexMap : MonoBehaviour
 
     }
 
-    private IEnumerator wait()
+    public IEnumerator wait(Hex hexGoesDown,Vector3 hexMapCoor)
     {
-        yield return new WaitForSeconds(1);
+        Debug.Log("Let Break Things.");
+        float distance = 1f;
+        while (distance > 0.1f)
+        {
+            hexGoesDown.gameObject.transform.position = Vector3.MoveTowards(hexGoesDown.gameObject.transform.position, hexMapCoor, 0.08f);
+            distance = Vector3.Distance(hexGoesDown.gameObject.transform.position, hexMapCoor);
+            yield return null;
+
+        }
+        hexGoesDown.transform.position = hexMapCoor;
     }
 
-    private void newHexHasArrived(int row)
+    private void newHexHasArrived(int col,int row)
     {
+        // Initialization
+        GameObject hexObj =
+            Instantiate(hexPrefab, new Vector3(hexMapCoord[col][row].x, hexMapCoord[col][row].y + 2f, 0), Quaternion.identity, this.transform.Find("Hexagons"));
+        Hex hex = hexObj.GetComponent<Hex>();
+        hex.setHexmap(this);
+        hex.setColandRowAnimatively(col, row);
+        hexObj.name = "c" + col + "_r" + row;
+
+        // Modification. 
+        int rand = Random.Range(1, hexMetarials.Length);
+        //rand = Random.Range(1, 4);
+        MeshRenderer mr = hexObj.GetComponentInChildren<MeshRenderer>();
+        mr.material = hexMetarials[rand];
+        hex.colorIndex = rand;
+        // 2d array that holds hexes
+        _hexList[col][row] = hex;
+        
         Debug.Log("I'll fill the " + row + " later");
     }
 }

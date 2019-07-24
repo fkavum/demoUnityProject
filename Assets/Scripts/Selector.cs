@@ -58,6 +58,8 @@ public class Selector : MonoBehaviour
                 {
                     Destroy(highligtedObj);
                     _threeHexRotator.swipeSelectedRight(triggeredObjs._selectedHexes);
+                    
+                   Invoke("breakSwipedAndOthers",0.3f);
                 }
             }
 
@@ -69,6 +71,8 @@ public class Selector : MonoBehaviour
 
                     _threeHexRotator.swipeSelectedLeft(triggeredObjs._selectedHexes);
                 }
+                
+                Invoke("breakSwipedAndOthers",0.3f);
             }
 
         }
@@ -77,6 +81,13 @@ public class Selector : MonoBehaviour
 
     }
 
+    private void breakSwipedAndOthers()
+    {
+        while (_hexMap.breakTriples())
+        {
+            Debug.Log("we need to break triples");
+        }
+    }
 
     private void initializeSelectedCircle()
     {
@@ -97,7 +108,6 @@ public class Selector : MonoBehaviour
         {
             _hexMap = triggeredObjs._selectedHexes[0].transform.parent.transform.parent.GetComponent<HexMap>();
         }
-        _hexMap.breakTriples();
 
         if (triggeredObjs._selectedHexes.Count == 3)
         {
