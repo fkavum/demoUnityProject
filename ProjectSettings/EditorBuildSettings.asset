@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/SimpleHexagonScene.unity
+    guid: 4b1cae4df476ae843939b4ae42427382
   m_configObjects: {}

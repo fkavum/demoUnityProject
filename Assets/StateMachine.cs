@@ -1,11 +1,8 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
 using System;
-using System.Collections.Generic;
 
 
-	public struct InfStateChangeEvent<T> where T: struct, IComparable, IConvertible, IFormattable
+public struct InfStateChangeEvent<T> where T: struct, IComparable, IConvertible, IFormattable
 	{
 		public GameObject Target;
 		public StateMachine<T> TargetStateMachine;

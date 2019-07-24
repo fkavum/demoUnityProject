@@ -8,6 +8,7 @@
       <e p="Assets" t="Include">
         <e p="gameManager.cs" t="Include" />
         <e p="InputManager.cs" t="Include" />
+        <e p="restartButton.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="firstTry" t="Include">
             <e p="Grid.cs" t="Include" />

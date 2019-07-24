@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -22,17 +21,27 @@ public class HexMap : MonoBehaviour
     public List<List<Hex>> _hexList = new List<List<Hex>>();
     public List<List<Vector3>> hexMapCoord = new List<List<Vector3>>();
 
+    public bool animate = false;
     void Start()
     {
         generateMap();
         generateCoordinates();
         Debug.Log("Map Generated Successfully!");
 
-        while (breakTriples())
+       /* while (breakTriples())
         {
             Debug.Log("we need to break triples");
-        }
+        }*/
+       StartCoroutine(deleteGarbages());
+    }
 
+    private IEnumerator deleteGarbages()
+    {
+        while (breakTriples())
+        {
+            yield return new WaitForSeconds(0.1f);
+            Debug.Log("we need to break triples");
+        }
     }
 
     private void generateCoordinates()
@@ -239,14 +248,14 @@ public class HexMap : MonoBehaviour
 
         Hex hexGoesDown = _hexList[emptyGridCol][emptyGridRow + 1];
         
-        // Move the real location
-        StartCoroutine(wait(hexGoesDown, hexMapCoord[emptyGridCol][emptyGridRow]));
-        //hexGoesDown.transform.position = hexMapCoord[emptyGridCol][emptyGridRow];
+        
         // change row and column
         hexGoesDown.row = emptyGridRow;
         // change hexmap
         _hexList[emptyGridCol][emptyGridRow] = hexGoesDown;
-
+        // Move the real location
+        StartCoroutine(wait(hexGoesDown, hexMapCoord[emptyGridCol][emptyGridRow]));
+       // hexGoesDown.transform.position = hexMapCoord[emptyGridCol][emptyGridRow];}
         // Recursively goes down
         fillEmptyGrid(emptyGridCol, emptyGridRow + 1);
 
@@ -257,14 +266,24 @@ public class HexMap : MonoBehaviour
     {
         Debug.Log("Let Break Things.");
         float distance = 1f;
+        if (!animate)
+        {
+            distance = 0f;}
+        
         while (distance > 0.1f)
         {
-            hexGoesDown.gameObject.transform.position = Vector3.MoveTowards(hexGoesDown.gameObject.transform.position, hexMapCoor, 0.08f);
+            if(hexGoesDown != null){
+            hexGoesDown.gameObject.transform.position = Vector3.MoveTowards(hexGoesDown.gameObject.transform.position, hexMapCoor, 0.05f);
             distance = Vector3.Distance(hexGoesDown.gameObject.transform.position, hexMapCoor);
-            yield return null;
+            yield return null;}
+            else
+            {
+                distance = 0f;
+            }
 
         }
-        hexGoesDown.transform.position = hexMapCoor;
+        if(hexGoesDown != null){
+        hexGoesDown.transform.position = hexMapCoor;}
     }
 
     private void newHexHasArrived(int col,int row)

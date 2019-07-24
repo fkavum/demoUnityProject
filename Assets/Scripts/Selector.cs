@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Selector : MonoBehaviour
 {
@@ -107,6 +104,7 @@ public class Selector : MonoBehaviour
         if (_hexMap == null && triggeredObjs._selectedHexes.Count > 0)
         {
             _hexMap = triggeredObjs._selectedHexes[0].transform.parent.transform.parent.GetComponent<HexMap>();
+            _hexMap.animate = true;
         }
 
         if (triggeredObjs._selectedHexes.Count == 3)
