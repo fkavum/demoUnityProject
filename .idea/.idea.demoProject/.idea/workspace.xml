@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06efde33-f210-4ca8-a094-b5e976982068" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.demoProject/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.demoProject/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.demoProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.demoProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SimpleHexagonScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SimpleHexagonScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Hex.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Hex.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/HexMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/HexMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Selector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Selector.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/firstTry/Grid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/firstTry/Grid.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/triggerCollector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/triggerCollector.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StateMachine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ThreeHexRotator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ThreeHexRotator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/gameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/gameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/UnityConnectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/UnityConnectSettings.asset" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/HexMap.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="47">
-              <caret line="256" column="83" selection-start-line="256" selection-start-column="83" selection-end-line="256" selection-end-column="83" />
+            <state relative-caret-position="303">
+              <caret line="272" column="31" selection-start-line="272" selection-start-column="31" selection-end-line="272" selection-end-column="31" />
               <folding>
                 <marker date="1564004034291" expanded="true" signature="6:127" ph="..." />
                 <marker date="1564004034291" expanded="true" signature="164:9049" ph="{...}" />
@@ -99,7 +88,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/restartButton.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="112">
@@ -343,12 +332,12 @@
       <workItem from="1563861102088" duration="2755000" />
       <workItem from="1563906035119" duration="3824000" />
       <workItem from="1563981693954" duration="5288000" />
-      <workItem from="1564001298153" duration="2986000" />
+      <workItem from="1564001298153" duration="3680000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85407000" />
+    <option name="totallyTimeSpent" value="86101000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -361,7 +350,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16462441" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -609,10 +597,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/restartButton.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="9" column="55" selection-start-line="9" selection-start-column="55" selection-end-line="9" selection-end-column="55" />
+          <folding>
+            <marker date="1564004287187" expanded="false" signature="6:78" ph="..." />
+            <marker date="1564004287187" expanded="true" signature="122:234" ph="{...}" />
+            <marker date="1564004287187" expanded="true" signature="163:232" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/HexMap.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="47">
-          <caret line="256" column="83" selection-start-line="256" selection-start-column="83" selection-end-line="256" selection-end-column="83" />
+        <state relative-caret-position="303">
+          <caret line="272" column="31" selection-start-line="272" selection-start-column="31" selection-end-line="272" selection-end-column="31" />
           <folding>
             <marker date="1564004034291" expanded="true" signature="6:127" ph="..." />
             <marker date="1564004034291" expanded="true" signature="164:9049" ph="{...}" />
@@ -662,18 +662,6 @@
             <marker date="1564004034291" expanded="true" signature="8036:8095" ph="{...}" />
             <marker date="1564004034291" expanded="true" signature="8138:8193" ph="{...}" />
             <marker date="1564004034291" expanded="true" signature="8251:9047" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/restartButton.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="9" column="55" selection-start-line="9" selection-start-column="55" selection-end-line="9" selection-end-column="55" />
-          <folding>
-            <marker date="1564004287187" expanded="false" signature="6:78" ph="..." />
-            <marker date="1564004287187" expanded="true" signature="122:234" ph="{...}" />
-            <marker date="1564004287187" expanded="true" signature="163:232" ph="{...}" />
           </folding>
         </state>
       </provider>
